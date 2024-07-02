@@ -16,8 +16,6 @@ csl: IEEE.csl
 
 ## Introduzione
 
-aggiungere *flusso di gestione documentale*
-
 L'obiettivo era quello di realizzare un progetto che includesse alcune delle metodologie e degli strumenti
 presentati durante il corso. In questo caso specifico è stato realizzato un libro digitale (Ebook) seguendo le specifiche dello
 standard ![ePub](#epub) (Electronic Publication), le cui principali specifiche sono presentate qui sotto. Il libro 
@@ -30,7 +28,7 @@ sono dimostrati effettivamente coerenti con l'argomento del libro e quindi si è
 può essere uno strumento utile nell'automazione della produzione di semplici contenuti editoriali.
 
 ### ePub
-[1]Esso è stato creato dall'International Digital Publishing Forum (IDPF), un consorzio di aziende che comprende editori, distributori e sviluppatori di lettori che si occupano di mantenerlo aggiornato, 
+Esso è stato creato dall'International Digital Publishing Forum (IDPF), un consorzio di aziende che comprende editori, distributori e sviluppatori di lettori che si occupano di mantenerlo aggiornato, 
 nel 2007 ed è considerato dal W3C il principale standard pubblico per la creazione di libri digitali in contrapposizione 
 a quelli proprietari come Mobipocket o AZW di Amazon. È stato scelto un nome generico come "Electronic Publication"
 per indicare il fatto che tale formato può essere utilizzato per la creazione di un qualsiasi documento, 
@@ -38,13 +36,16 @@ come libri, riviste, giornali purchè essi siano distribuibili in formato digita
 che si basa su XML ed è da considerarsi, per certi versi, una versione aggiornata e sostitutiva dell'*Open eBook* (OeBPS).
 L'estensione del file è .epub e la sua caratteristica principale, essendo un formato di testo, è quella di essere "reflowable" il che 
 significa che il contenuto può adattarsi dinamicamente alle dimensioni dello schermo del dispositivo di visualizzazione.
-Il formato è costituito da tre specifiche: l'*Open Publication Structure* (OPS), che decsrive come marcare i contenuti del file, 
-l'*Open Packaging Format* (OPF), che descrive in XML la struttura del file .epub, e l'*OEBPS Container Format* (OCF), che descrive 
-il metodo per costruire l'archivio ZIP che conterrà la pubblicazione. Andando ad aprire l'archivio .epub realizzato 
-per questo progetto si può riscontrare la seguente struttura: il file *mimetype* con la dichiarazione del formato (*application/epub+zip*), 
-la cartella *META-INF* contenente il file *container.xml*, il quale contiene il file principale dell'applicazione, il file 
-root che il reader dovrà leggere per sapere come organizzare il documento e infine la cartella *EPUB*, che ha sostitui la directory OEBPS
-in EPUB3, che contiene il file *content.opf*, il file *toc.ncx* e le cartelle *images*, *styles* e *text*
+Il formato è costituito da tre specifiche: 
+* l'*Open Publication Structure* (OPS), che decsrive come marcare i contenuti del file, 
+* l'*Open Packaging Format* (OPF), che descrive in XML la struttura del file .epub, 
+* l'*OEBPS Container Format* (OCF), che descrive il metodo per costruire l'archivio ZIP che conterrà la pubblicazione. 
+
+Andando ad aprire l'archivio .epub realizzato per questo progetto si può riscontrare la seguente struttura: 
+* il file *mimetype* con la dichiarazione del formato (*application/epub+zip*), 
+* la cartella *META-INF* contenente il file *container.xml*, il quale contiene il file principale dell'applicazione, il file 
+root che il reader dovrà leggere per sapere come organizzare il documento. 
+* la cartella *EPUB*, che ha sostituito la directory OEBPS in EPUB3, che contiene il file *content.opf*, il file *toc.ncx* e le cartelle *media*, *styles* e *text*
 Il file content.opf è detto Package File e contiene i metadati e le informazioni strutturali e bibliografiche dell'ebook. Esso è composto da un'intestazione XML
 e da quattro sezioni: la sezione **metadata**, che fornisce al reader le informazioni di descrizione del libro, la sezione **manifest**,
 che indica al reader dove trovare i contenuti, la sezione **spines**, che indica al reader in che ordine deve visulizzare i file e la sezione
@@ -59,7 +60,7 @@ un insieme di writer, che convertono questa rappresentazione astratta in un form
 esempio attraverso l'interfaccia grafica, Python o da linea di comando. Nel caso specifico di questo progetto è stato
 utilizzato da linea di comando. Viene riportato il comando utilizzato per convertire il file HTML, con il contenuto del 
 libro, in ePub: 
-> **pandoc project.html --css=stylesheet.css --epub-cover-image=cover.jpg --epub-metadata=metadata.xml  --toc -o L'IA_nel_processo_editoriale.epub**  
+> ```pandoc project.html --css=stylesheet.css --epub-cover-image=cover.jpg --epub-metadata=metadata.xml  --toc -o L'IA_nel_processo_editoriale.epub```
 Tale comando consente anche di associare al documento ePub un foglio di stile CSS, una copertina contenuta nel file cover.jpg,
 un file contenenti i metadati del libro (metadata.xml) e di includere un sommario che verrà generato in automatico.
 
@@ -71,15 +72,84 @@ In questa fase iniziale, ma fondamentale per la creazione dell'opera, si è indi
 della pubblicazione, quindi in questo caso l'argomento principale di un'opera che può essere collegata alla didattica. 
 Sono state fatte ricerche e analisi delle tendenze attuali nel settore editoriale ed è stato individuato il target dell'opera, ovvero
 i ![destinatari](#destinatari) che verranno descritti qui sotto. Si sono raccolte informazioni relative al tema 
-dell'intelligenza artificiale nel processo editoriale, impiegando anche strumenti e operatori di ricerca avanzata come quelli di Google.
+dell'intelligenza artificiale nel processo editoriale, impiegando anche strumenti e operatori di ricerca avanzata come quelli di Google. Per quanto 
+riguarda la gestione documentale dei contenuti dell'opera è stata utilizzata la piattforma GitHub, la quale attraverso la creazione di un 
+repository apposito ha permesso di avere una migliore organizzazione del progetto; per dettagli maggiori si rimanda a una delle ![sezioni 
+successive](#gestione-documentale).
 
 ### Destinatari
-Descrivere i destinatari del prodotto editoriale descrivendo le personas alle quali si rivolge il prodotto. Descrivete alcuni scenari d'uso nei quali inserire le personas scelte come destinatari.
 
-> LM2 slide 29-32
+La descrizione dei destinatari utilizzando il metodo delle *personas* consente di identificare ancor meglio il target
+della pubblicazione andando a riconoscere più nel dettaglio le diverse esigenze, esperienze, i comportamenti e obiettivi degli utenti.
+Si tratta di rappresentazioni fittizie di clienti ideali basate su dati reali e ricerche di mercato e ciascuna personas viene descritta con dettagli
+come nome, età, sesso, occupazione, livello di istruzione, reddito, modelli di comportamento e atteggiamenti, motivazioni e frustrazioni.
+
+**Personas**
+
+1. Persona 1: Stefania, 25 anni, studentessa universitaria
+   * Età: 25 anni
+   * Sesso: Femmina
+   * Occupazione: Studentessa universitaria di Comunicazione
+   * Livello di istruzione: Laurea magistrale in corso
+   * Comportamenti: Utilizza laptop e smartphone per la ricerca e la scrittura di articoli. Legge blog e segue corsi online su nuove tecnologie nel giornalismo.
+   * Motivazioni: Vuole imparare come l'IA può essere utilizzata nel giornalismo per migliorare la ricerca, l'analisi dei dati e la produzione di contenuti.
+   * Frustrazioni: Trova complicato integrare nuove tecnologie nei suoi progetti accademici e non è sempre sicura di quali strumenti siano i migliori.
+2. Persona 2: Davide, 27 anni, redattore
+   * Età: 32 anni
+   * Sesso: Maschio
+   * Occupazione: Redattore e correttore di bozze freelance
+   * Livello di Istruzione: Laurea in Comunicazione
+   * Reddito: €25,000 annui
+   * Comportamenti: Usa laptop e smartphone per lavorare. Cerca strumenti che possano migliorare la qualità e l'efficienza del suo lavoro.
+   * Motivazioni: Vuole trovare modi per automatizzare compiti ripetitivi per dedicare più tempo alla creatività.
+   * Frustrazioni: Trova difficoltà nel tenersi aggiornato con tutte le nuove tecnologie emergenti.
+3. Persona 3: Paolo, 56 anni, direttore editoriale
+   * Età: 56 anni
+   * Sesso: Maschio
+   * Occupazione: Direttore Editoriale in una casa editrice
+   * Livello di Istruzione: Laurea in Letteratura
+   * Reddito: €60,000 annui
+   * Comportamenti: Utilizza principalmente laptop e tablet per lavoro. Legge articoli su gestione editoriale e innovazioni nel settore.
+   * Motivazioni: Vuole ottimizzare i processi di produzione, ridurre i costi e migliorare la qualità dei contenuti.
+   * Frustrazioni: Difficoltà nell'implementare nuove tecnologie senza interrompere i flussi di lavoro esistenti.
+
+Una volta definite le caratteristiche di ogni personas, al fine di comprendere sempre di più la realtà d'interesse, 
+è utile predisporre degli scenari d'uso in cui si immaginano delle situazioni reali in cui le personas potrebbero
+utilizzare il prodotto editoriale. Ci si concentra sul descrivere il contesto in cui si trovano, perchè utilizzano il 
+prodotto e come questo soddisfa le loro esigenze.
+
+**Scenari d'uso**
+* Scenario 1: Ottimizzazione del flusso di lavoro editoriale
+
+  Paolo, come direttore editoriale, è sempre alla ricerca di modi per ottimizzare il flusso di 
+  lavoro della sua casa editrice. Legge l'ebook sull'IA nel processo di produzione editoriale e 
+  scopre come l'IA può automatizzare la revisione delle bozze, migliorare la gestione dei 
+  contenuti e personalizzare le raccomandazioni di lettura. Implementa un sistema di IA che 
+  riduce i tempi di revisione, permettendo alla sua squadra di concentrarsi su compiti
+  più creativi.
+
+
+* Scenario 2: Automazione delle attività ripetitive
+
+  Davide è un redattore freelance che lavora su numerosi progetti contemporaneamente. 
+  Spesso passa ore a correggere bozze e a formattare documenti. Dopo aver letto l'ebook, 
+  inizia a utilizzare strumenti di IA per la correzione grammaticale e la formattazione automatica. 
+  Questo gli permette di risparmiare tempo prezioso, migliorare la qualità del suo lavoro e 
+  accettare più incarichi.
+
+* Scenario 3: Apprendimento e integrazione di nuove tecnologie
+
+  Stefania è una studentessa di giornalismo interessata a come l'IA possa rivoluzionare il settore. 
+  L'ebook le offre una panoramica completa su strumenti di IA per la ricerca di informazioni, 
+  l'analisi dei dati e la generazione automatica di testi. Utilizza queste conoscenze per il suo 
+  progetto di tesi, sviluppando un prototipo di piattaforma di notizie che utilizza l'IA per 
+  personalizzare i contenuti in base alle preferenze dei lettori.
 
 ### Requisiti di accettazione
-Indicate i requisiti di accettazione che dovranno essere soddisfatti per raggiungere i destinatari. Quali modelli di fruizione consideriamo più efficaci per i nostri destinatari? Quali standard consideriamo come riferimento? Quali aspetti di innovazione possiamo proporre? Nella qualità dei contenuti o nel processo di fruizione?
+Indicate i requisiti di accettazione che dovranno essere soddisfatti per raggiungere i destinatari. 
+Quali modelli di fruizione consideriamo più efficaci per i nostri destinatari? 
+Quali standard consideriamo come riferimento? Quali aspetti di innovazione possiamo proporre? 
+Nella qualità dei contenuti o nel processo di fruizione?
 
 > LM4
 
