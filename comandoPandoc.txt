@@ -1,0 +1,2 @@
+pandoc project.html --css=stylesheet.css --epub-cover-image=cover.jpg 
+--epub-metadata=metadata.xml  --toc -o L'IA_nel_processo_editoriale.epub

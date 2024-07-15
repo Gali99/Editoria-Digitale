@@ -1,0 +1,5 @@
+da md a PDF
+pandoc -s RelazioneProgettoEsame.md -o RelazioneProgettoEsame.pdf --citeproc
+
+da md a docx
+pandoc -s RelazioneProgettoEsame.md -o RelazioneProgettoEsame.docx --citeproc
